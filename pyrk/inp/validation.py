@@ -16,14 +16,22 @@ def validate_ge(valname, val, llim):
     :param llim: the lower limit of acceptable value for val
     :type llim: the same type as val
     """
-    if validate_num(valname, val) < llim:
-        msg = valname + " must be greater than or equal to "
-        msg += str(llim) + ".\n"
-        msg += "The value provided was : "
-        msg += str(val)
-        raise ValueError(msg)
+    check_number = validate_num(valname, val)
+    breakpoint()
+    if type(val) == type(llim):
+
+        if validate_num(valname, val) < llim:
+
+            msg = valname + " must be greater than or equal to "
+            msg += str(llim) + ".\n"
+            msg += "The value provided was : "
+            msg += str(val)
+            raise ValueError(msg)
+        else:
+            return val
+
     else:
-        return val
+        raise TypeError(f"check number type is {type(check_number)} different from {type(llim)} ")
 
 
 def validate_g(valname, val, llim):
