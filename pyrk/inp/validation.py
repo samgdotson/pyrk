@@ -17,7 +17,7 @@ def validate_ge(valname, val, llim):
     :type llim: the same type as val
     """
     check_number = validate_num(valname, val)
-    breakpoint()
+    # break point()
     if type(val) == type(llim):
 
         if validate_num(valname, val) < llim:
@@ -31,7 +31,7 @@ def validate_ge(valname, val, llim):
             return val
 
     else:
-        raise TypeError(f"check number type is {type(check_number)} different from {type(llim)} ")
+        raise TypeError(type(check_number) is type(llim))
 
 
 def validate_g(valname, val, llim):

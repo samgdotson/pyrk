@@ -22,10 +22,12 @@ class Timer(object):
         :param dt: size of the timestep
         :type dt: float, units of seconds
         """
-        self.t0 = validation.validate_ge("t0", t0, 0.0 * units.seconds)
+        llim_df = 0.0 * units.seconds
+
+        self.t0 = validation.validate_ge("t0", t0, llim_df)
         self.t_feedback = validation.validate_ge("t_feedback", t_feedback, t0)
         self.tf = validation.validate_ge("tf", tf, t_feedback)
-        self.dt = validation.validate_g("dt", dt, 0.0 * units.seconds)
+        self.dt = validation.validate_g("dt", dt, llim_df)
         self.series = units.Quantity(np.linspace(start=t0.magnitude,
                                                  stop=tf.magnitude,
                                                  num=self.timesteps()),
